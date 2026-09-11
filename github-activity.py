@@ -4,16 +4,12 @@ import re
 from urllib.request import urlopen
 
 def parse_argument():
-    # Retrieve the raw CLI data to valid it and prevents an IndexError.
-    try:        
-        if len(sys.argv) > 2:
-            print("The correct command is 'github-actitivy.py <username>'"
-            "\nPlease try again.")
-            return None
-        return sys.argv[1]
-    except IndexError:
-        print("Please insert a <username> to verify the activity.")
+    # Retrieve the raw CLI argument, or None if invalid.
+    if len(sys.argv) != 2:
+        print("The correct command is 'github-activity.py <username>'"
+        "\nPlease try again.")
         return None
+    return sys.argv[1]
     
 
 def validate_username(valid_user):
